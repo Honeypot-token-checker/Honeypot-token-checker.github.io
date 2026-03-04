@@ -98,7 +98,6 @@
       background: rgba(255,255,255,.85);
       transform: rotate(8deg);
     }
-
     .nav-links{
       display:flex; align-items:center; gap:12px;
       flex-wrap:wrap;
@@ -128,11 +127,22 @@
       background: linear-gradient(135deg, rgba(79,70,229,.95), rgba(6,182,212,.95));
       border:1px solid rgba(255,255,255,.35);
       color:#fff;
-      padding: 14px 18px;
-      font-size: 15px;
       box-shadow: 0 18px 55px rgba(79,70,229,.25);
     }
     .btn-primary:hover{transform: translateY(-1px) scale(1.01)}
+
+    /* BIG centered CTA (hero only) */
+    .cta-wrap{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .btn-hero{
+      padding: 18px 28px;
+      font-size: 16px;
+      min-width: 320px;
+    }
 
     /* Sections */
     .section{padding: 16px 0}
@@ -165,7 +175,7 @@
     }
     p{margin:0 0 10px}
 
-    /* HERO (single wide, no right dashboard) */
+    /* HERO (wide) */
     .hero{padding: 34px 0 10px}
     .hero-card{
       border-radius: var(--radius2);
@@ -203,9 +213,14 @@
     }
     .lead{margin:0; color: var(--muted); font-size: 16px}
 
-    .hero-actions{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center}
-
-    .mini{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; color: var(--muted); font-size: 13px}
+    .mini{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      color: var(--muted);
+      font-size: 13px
+    }
     .chip{
       display:inline-flex; align-items:center; gap:8px;
       padding:8px 10px;
@@ -222,28 +237,6 @@
       border-radius:999px;
       font-size:12px;
     }
-
-    .trust-row{
-      margin-top:12px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      color: var(--muted);
-      font-size:13px;
-    }
-    .trust-row a{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(226,232,240,.95);
-      background: rgba(255,255,255,.55);
-      color: var(--muted);
-      text-decoration:none;
-    }
-    .trust-row a:hover{color:var(--text); text-decoration:none}
 
     .callout{
       border-radius: 18px;
@@ -265,6 +258,7 @@
     .b-warn{background: rgba(245,158,11,.92)}
     .b-ok{background: rgba(22,163,74,.92)}
 
+    /* Toc pills */
     .toc{
       display:flex; flex-wrap:wrap; gap:10px;
       margin-top:12px;
@@ -301,7 +295,7 @@
     .bad{color:var(--danger); font-weight:900}
     .warn{color:var(--warn); font-weight:900}
 
-    /* Checker input (no external calls) */
+    /* Token input (no external calls) */
     .checker{
       display:flex; gap:10px; flex-wrap:wrap;
       align-items:center;
@@ -322,6 +316,29 @@
       font-size:14px;
       color:var(--text);
     }
+
+    /* Sources chips (moved from hero into body) */
+    .source-pills{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .source-pills a{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(226,232,240,.95);
+      background: rgba(255,255,255,.55);
+      color: var(--muted);
+      text-decoration:none;
+    }
+    .source-pills a:hover{color:var(--text); text-decoration:none}
 
     /* FAQ */
     details{
@@ -373,6 +390,7 @@
     @media (max-width: 980px){
       table{min-width:760px}
       .grid{grid-template-columns: 1fr}
+      .btn-hero{min-width: 100%}
     }
   </style>
 </head>
@@ -396,14 +414,13 @@
           <a href="#tools">Tools</a>
           <a href="#etherscan">Etherscan</a>
           <a href="#faq">FAQ</a>
-          <a class="btn btn-primary" href="#tools" aria-label="Run honeypot token check">Run a honeypot token check</a>
         </nav>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO (wide, no dashboard, single CTA) -->
+    <!-- HERO (CTA centered + bigger, sources moved to body) -->
     <section class="hero">
       <div class="container">
         <div class="hero-card">
@@ -417,23 +434,14 @@
             <b>token cannot sell</b> scenarios.
           </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#tools" aria-label="Run honeypot token check">Run a honeypot token check</a>
+          <div class="cta-wrap">
+            <a class="btn btn-primary btn-hero" href="#tools" aria-label="Run honeypot token check">Run a honeypot token check</a>
           </div>
 
           <div class="mini" aria-label="Quick highlights">
             <span class="chip"><span class="tag">Fast</span> <b>60-second</b> scam filter</span>
             <span class="chip"><span class="tag">On-chain</span> Verify <b>sellability</b> + taxes</span>
             <span class="chip"><span class="tag">Safe</span> Prevent risky approvals</span>
-          </div>
-
-          <div class="trust-row" aria-label="Trusted references">
-            <a href="https://etherscan.io/verifyContract" target="_blank" rel="nofollow noopener">Etherscan (verification)</a>
-            <a href="https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20" target="_blank" rel="nofollow noopener">OpenZeppelin ERC20</a>
-            <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">Chainlink (read contracts)</a>
-            <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">FTC (crypto scams)</a>
-            <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3 (reporting)</a>
-            <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">CertiK (honeypot patterns)</a>
           </div>
 
           <div class="divider"></div>
@@ -506,6 +514,33 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOURCES (moved from hero into body) -->
+    <section id="sources" class="section">
+      <div class="container">
+        <div class="card">
+          <h2>Authoritative Sources Used in This Guide</h2>
+          <p class="muted">
+            These references are linked throughout the page where they are most relevant (verification, ERC-20 allowances, contract reading, scam awareness, reporting).
+          </p>
+
+          <div class="source-pills" aria-label="Authoritative sources">
+            <a href="https://etherscan.io/verifyContract" target="_blank" rel="nofollow noopener">Etherscan (verification)</a>
+            <a href="https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20" target="_blank" rel="nofollow noopener">OpenZeppelin ERC20</a>
+            <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">Chainlink (read contracts)</a>
+            <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">FTC (crypto scams)</a>
+            <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3 (reporting)</a>
+            <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">CertiK (honeypot patterns)</a>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="muted" style="margin:0">
+            Tip: treat “checker” sites carefully — scammers clone interfaces. Prefer official domains, verified contracts, and on-chain evidence.
+          </p>
         </div>
       </div>
     </section>
@@ -916,7 +951,7 @@
       </div>
     </section>
 
-    <!-- TRUST & SOURCES -->
+    <!-- TRUST & AUTHOR -->
     <section class="section">
       <div class="container">
         <div class="card">
@@ -1031,7 +1066,7 @@
             <p>
               Paste the token address into Etherscan and open the <b>Contract</b> tab. Look for verified source code and scan for restrictions:
               blacklist/whitelist logic, tradingEnabled toggles, maxTx/maxWallet, cooldowns, min sell rules, and owner-only setters.
-              If you’re learning contract reading, Chainlink’s tutorial is a great starting point:
+              If you’re learning contract reading, Chainlink’s tutorial is a strong starting point:
               <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">tutorial</a>.
             </p>
           </details>
