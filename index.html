@@ -6,37 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Honeypot Token Checker — Detect Scam Tokens Before You Buy (2026)</title>
-  <meta name="description" content="Honeypot token checker guide (2026): how honeypot token detection works, how to detect honeypot tokens before buying, common red flags, best tools, and how to verify token contracts on Etherscan. Includes checklists, tables, and a deep FAQ." />
+  <meta name="description" content="Honeypot token checker (2026): honeypot token detection, how to detect honeypot tokens before buying, why you can't sell, best checker tools, common scam signs, and how to verify token contracts on Etherscan. Includes tables, checklists, sources, and a deep FAQ." />
   <meta name="author" content="DeFi Safety Research Desk" />
   <link rel="canonical" href="https://honeypot-token-checker.github.io/" />
 
   <meta property="og:title" content="Honeypot Token Checker — Detect Scam Tokens Before You Buy (2026)" />
-  <meta property="og:description" content="Learn how to check if a token is a honeypot, why you can't sell, and how to verify contracts on Etherscan. Tools, checklists, and FAQ." />
+  <meta property="og:description" content="Check if a token is a honeypot, why you can’t sell, and how to verify contracts on Etherscan. Tools, checklists, sources, and a deep FAQ." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://honeypot-token-checker.github.io/" />
-
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Honeypot Token Checker (2026)" />
-  <meta name="twitter:description" content="How to detect honeypot tokens and check if a token is a scam—before you buy." />
+
+  <!-- Minimal Schema (EEAT) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Honeypot Token Checker — Detect Scam Tokens Before You Buy (2026)",
+    "author":{"@type":"Organization","name":"DeFi Safety Research Desk"},
+    "dateModified":"2026-03-04",
+    "datePublished":"2026-03-04",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://honeypot-token-checker.github.io/"}
+  }
+  </script>
 
   <style>
     :root{
       --bg1:#f8fafc;
       --bg2:#eef2ff;
-      --card:#ffffffcc;
-      --cardSolid:#ffffff;
       --text:#0f172a;
       --muted:#475569;
       --border:#e2e8f0;
-      --shadow: 0 20px 60px rgba(2,6,23,.10);
-      --shadow2: 0 10px 30px rgba(2,6,23,.08);
+
+      --cardA: rgba(255,255,255,.82);
+      --cardB: rgba(255,255,255,.58);
+      --shadow: 0 22px 60px rgba(2,6,23,.10);
+      --shadow2: 0 12px 30px rgba(2,6,23,.08);
+
       --accent:#4f46e5;
       --accent2:#06b6d4;
+
       --danger:#ef4444;
       --warn:#f59e0b;
       --ok:#16a34a;
+
       --radius: 18px;
-      --radius2: 24px;
+      --radius2: 26px;
       --max: 1160px;
     }
 
@@ -47,29 +61,29 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       background:
-        radial-gradient(1200px 600px at 15% 10%, rgba(79,70,229,.14), transparent 60%),
-        radial-gradient(900px 600px at 85% 15%, rgba(6,182,212,.12), transparent 60%),
+        radial-gradient(1200px 600px at 12% 12%, rgba(79,70,229,.14), transparent 60%),
+        radial-gradient(900px 600px at 88% 14%, rgba(6,182,212,.12), transparent 60%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
       line-height:1.55;
     }
-
     a{color:var(--accent); text-decoration:none}
     a:hover{text-decoration:underline}
-
     .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Sticky header */
     .nav{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(14px);
-      background: rgba(248,250,252,.65);
-      border-bottom:1px solid rgba(226,232,240,.9);
+      background: rgba(248,250,252,.66);
+      border-bottom:1px solid rgba(226,232,240,.95);
     }
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
       gap:14px; padding:14px 0;
     }
     .brand{
-      display:flex; align-items:center; gap:10px; font-weight:800;
-      letter-spacing:-.02em;
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; letter-spacing:-.02em;
     }
     .logo{
       width:36px; height:36px; border-radius:12px;
@@ -84,8 +98,9 @@
       background: rgba(255,255,255,.85);
       transform: rotate(8deg);
     }
+
     .nav-links{
-      display:flex; align-items:center; gap:14px;
+      display:flex; align-items:center; gap:12px;
       flex-wrap:wrap;
       justify-content:flex-end;
       font-size:14px;
@@ -99,12 +114,12 @@
       gap:10px;
       padding:12px 16px;
       border-radius:999px;
-      border:1px solid rgba(226,232,240,.9);
+      border:1px solid rgba(226,232,240,.95);
       background: rgba(255,255,255,.72);
       box-shadow: var(--shadow2);
       color: var(--text);
-      font-weight:700;
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      font-weight:800;
+      transition: transform .15s ease, box-shadow .15s ease;
       text-decoration:none !important;
       white-space:nowrap;
     }
@@ -113,145 +128,30 @@
       background: linear-gradient(135deg, rgba(79,70,229,.95), rgba(6,182,212,.95));
       border:1px solid rgba(255,255,255,.35);
       color:#fff;
+      padding: 14px 18px;
+      font-size: 15px;
       box-shadow: 0 18px 55px rgba(79,70,229,.25);
     }
     .btn-primary:hover{transform: translateY(-1px) scale(1.01)}
-    .btn-ghost{
-      background: rgba(255,255,255,.55);
-    }
 
-    .hero{
-      padding:34px 0 18px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:stretch;
-    }
-    .hero-card{
+    /* Sections */
+    .section{padding: 16px 0}
+    .card{
       border-radius: var(--radius2);
-      border: 1px solid rgba(226,232,240,.9);
-      background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.52));
-      backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      position:relative;
-      overflow:hidden;
+      border: 1px solid rgba(226,232,240,.95);
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow2);
+      padding: 18px;
     }
-    .hero-card:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(600px 200px at 10% 10%, rgba(79,70,229,.18), transparent 60%),
-        radial-gradient(500px 200px at 90% 5%, rgba(6,182,212,.16), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-card > *{position:relative}
-
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      background: rgba(79,70,229,.08);
-      border:1px solid rgba(79,70,229,.18);
-      color: var(--accent);
-      font-weight:800;
-      font-size:13px;
-    }
-    .kicker .dot{
-      width:8px; height:8px; border-radius:99px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-    }
+    .divider{height:1px; background: rgba(226,232,240,.95); margin: 14px 0}
+    .muted{color:var(--muted)}
 
     h1{
       margin:14px 0 10px;
       font-size: clamp(30px, 3.1vw, 46px);
       line-height:1.08;
       letter-spacing:-.03em;
-    }
-    .lead{
-      margin:0;
-      color: var(--muted);
-      font-size: 16px;
-    }
-    .hero-actions{
-      margin-top:16px;
-      display:flex; gap:12px; flex-wrap:wrap;
-      align-items:center;
-    }
-    .mini{
-      margin-top:12px;
-      display:flex; gap:10px; flex-wrap:wrap;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(226,232,240,.95);
-      background: rgba(255,255,255,.55);
-    }
-    .chip b{color:var(--text)}
-    .chip .tag{
-      font-weight:900;
-      color:#fff;
-      background: rgba(79,70,229,.9);
-      padding:2px 8px;
-      border-radius:999px;
-      font-size:12px;
-    }
-
-    .side-card{
-      border-radius: var(--radius2);
-      border: 1px solid rgba(226,232,240,.9);
-      background: rgba(255,255,255,.65);
-      backdrop-filter: blur(14px);
-      box-shadow: var(--shadow2);
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .side-card h3{
-      margin:0;
-      font-size:16px;
-      letter-spacing:-.02em;
-    }
-    .score{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    .pill{
-      border:1px solid rgba(226,232,240,.95);
-      background: rgba(255,255,255,.62);
-      border-radius: 16px;
-      padding:12px;
-    }
-    .pill .label{font-size:12px; color:var(--muted)}
-    .pill .value{font-size:16px; font-weight:900; letter-spacing:-.02em}
-    .note{
-      font-size:13px; color:var(--muted);
-      margin:0;
-    }
-
-    .section{
-      padding: 16px 0;
-    }
-    .card{
-      border-radius: var(--radius2);
-      border: 1px solid rgba(226,232,240,.92);
-      background: rgba(255,255,255,.70);
-      backdrop-filter: blur(14px);
-      box-shadow: var(--shadow2);
-      padding: 18px;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
     }
     h2{
       margin:0 0 10px;
@@ -263,8 +163,88 @@
       font-size: 16px;
       letter-spacing:-.01em;
     }
-    p{margin: 0 0 10px}
-    .muted{color:var(--muted)}
+    p{margin:0 0 10px}
+
+    /* HERO (single wide, no right dashboard) */
+    .hero{padding: 34px 0 10px}
+    .hero-card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(226,232,240,.95);
+      background: linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.60));
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 240px at 8% 10%, rgba(79,70,229,.18), transparent 60%),
+        radial-gradient(600px 220px at 92% 8%, rgba(6,182,212,.16), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-card > *{position:relative}
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(79,70,229,.08);
+      border:1px solid rgba(79,70,229,.18);
+      color: var(--accent);
+      font-weight:900;
+      font-size:13px;
+    }
+    .kicker .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+    .lead{margin:0; color: var(--muted); font-size: 16px}
+
+    .hero-actions{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+
+    .mini{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; color: var(--muted); font-size: 13px}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(226,232,240,.95);
+      background: rgba(255,255,255,.55);
+    }
+    .chip b{color:var(--text)}
+    .chip .tag{
+      font-weight:900;
+      color:#fff;
+      background: rgba(79,70,229,.90);
+      padding:2px 8px;
+      border-radius:999px;
+      font-size:12px;
+    }
+
+    .trust-row{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .trust-row a{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(226,232,240,.95);
+      background: rgba(255,255,255,.55);
+      color: var(--muted);
+      text-decoration:none;
+    }
+    .trust-row a:hover{color:var(--text); text-decoration:none}
+
     .callout{
       border-radius: 18px;
       padding: 12px 12px;
@@ -284,31 +264,56 @@
     .b-danger{background: rgba(239,68,68,.92)}
     .b-warn{background: rgba(245,158,11,.92)}
     .b-ok{background: rgba(22,163,74,.92)}
+
+    .toc{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:12px;
+    }
+    .toc a{
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(226,232,240,.95);
+      background: rgba(255,255,255,.55);
+      color: var(--muted);
+      text-decoration:none;
+    }
+    .toc a:hover{color:var(--text)}
+
+    /* Two-col helpers */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
     ul{margin: 8px 0 0 18px; color:var(--muted)}
     li{margin: 6px 0}
 
+    /* Tables */
     .table-wrap{overflow:auto; border-radius:18px; border:1px solid rgba(226,232,240,.95)}
-    table{border-collapse:collapse; width:100%; min-width:840px; background: rgba(255,255,255,.75)}
+    table{border-collapse:collapse; width:100%; min-width:860px; background: rgba(255,255,255,.75)}
     th,td{padding:12px 12px; border-bottom:1px solid rgba(226,232,240,.95); vertical-align:top}
-    th{font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); text-align:left; background: rgba(248,250,252,.9)}
+    th{font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); text-align:left; background: rgba(248,250,252,.92)}
     td{font-size:14px; color:var(--text)}
     tr:last-child td{border-bottom:none}
-    .good{color:var(--ok); font-weight:800}
-    .bad{color:var(--danger); font-weight:800}
-    .warn{color:var(--warn); font-weight:800}
+    .good{color:var(--ok); font-weight:900}
+    .bad{color:var(--danger); font-weight:900}
+    .warn{color:var(--warn); font-weight:900}
 
+    /* Checker input (no external calls) */
     .checker{
       display:flex; gap:10px; flex-wrap:wrap;
       align-items:center;
       margin-top:10px;
     }
     .input{
-      flex: 1 1 360px;
+      flex: 1 1 420px;
       display:flex; align-items:center; gap:10px;
       padding: 12px 14px;
       border-radius: 999px;
       border: 1px solid rgba(226,232,240,.95);
-      background: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.72);
       box-shadow: 0 10px 25px rgba(2,6,23,.05);
     }
     .input input{
@@ -317,18 +322,8 @@
       font-size:14px;
       color:var(--text);
     }
-    .helper{
-      margin-top:10px;
-      display:flex; gap:10px; flex-wrap:wrap;
-      font-size:13px; color:var(--muted);
-    }
-    .helper code{
-      background: rgba(15,23,42,.06);
-      padding:2px 6px;
-      border-radius:8px;
-      border:1px solid rgba(226,232,240,.95);
-    }
 
+    /* FAQ */
     details{
       border:1px solid rgba(226,232,240,.95);
       border-radius: 16px;
@@ -342,14 +337,9 @@
       letter-spacing:-.01em;
     }
     details p{margin:10px 0 0; color:var(--muted)}
-    .footer{
-      padding: 26px 0 40px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .footer .row{
-      display:flex; gap:14px; justify-content:space-between; flex-wrap:wrap; align-items:center;
-    }
+    details ul{margin-top:8px}
+
+    /* Footer + author */
     .author{
       display:flex; gap:12px; align-items:flex-start;
       border:1px solid rgba(226,232,240,.95);
@@ -370,28 +360,19 @@
       border-radius: 14px;
       background: rgba(255,255,255,.85);
     }
-    .author b{color:var(--text)}
     .smallcaps{font-size:12px; text-transform:uppercase; letter-spacing:.08em}
-    .divider{height:1px; background: rgba(226,232,240,.95); margin: 14px 0}
-    .sources a{white-space:nowrap}
-    .toc{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top:10px;
-    }
-    .toc a{
-      font-size:13px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(226,232,240,.95);
-      background: rgba(255,255,255,.55);
+    .footer{
+      padding: 26px 0 40px;
       color: var(--muted);
-      text-decoration:none;
+      font-size: 13px;
     }
-    .toc a:hover{color:var(--text)}
+    .footer .row{
+      display:flex; gap:14px; justify-content:space-between; flex-wrap:wrap; align-items:center;
+    }
 
     @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr}
       table{min-width:760px}
+      .grid{grid-template-columns: 1fr}
     }
   </style>
 </head>
@@ -404,102 +385,82 @@
           <div class="logo" aria-hidden="true"></div>
           <div>
             <div style="font-size:14px; line-height:1.1">Honeypot Token Checker</div>
-            <div style="font-size:12px; color:var(--muted); font-weight:700">Honeypot token detection + runbook</div>
+            <div style="font-size:12px; color:var(--muted); font-weight:800">Honeypot token detection + runbook</div>
           </div>
         </div>
 
-        <div class="nav-links">
-          <a href="#what-is">What is a honeypot</a>
+        <nav class="nav-links" aria-label="Top navigation">
+          <a href="#what-is">What is</a>
           <a href="#how-it-works">How it works</a>
           <a href="#how-to-check">How to check</a>
-          <a href="#tools">Best tools</a>
+          <a href="#tools">Tools</a>
           <a href="#etherscan">Etherscan</a>
           <a href="#faq">FAQ</a>
-          <a class="btn btn-primary" href="#tools" aria-label="Jump to the checker tools">Check a token now</a>
-        </div>
+          <a class="btn btn-primary" href="#tools" aria-label="Run honeypot token check">Run a honeypot token check</a>
+        </nav>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- HERO (wide, no dashboard, single CTA) -->
     <section class="hero">
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-card">
-            <div class="kicker"><span class="dot" aria-hidden="true"></span> Security-first guide • Updated 2026</div>
+        <div class="hero-card">
+          <div class="kicker"><span class="dot" aria-hidden="true"></span> Security-first guide • Updated 2026</div>
 
-            <h1>Honeypot Token Checker – Detect Scam Tokens Before You Buy</h1>
+          <h1>Honeypot Token Checker – Detect Scam Tokens Before You Buy</h1>
 
-            <p class="lead">
-              If you’re asking <b>“is this token a honeypot?”</b> or <b>“why can’t I sell my token?”</b>, this page gives you a
-              practical <b>honeypot token checker</b> workflow: fast screening, on-chain verification, and the exact red flags that cause “token cannot sell” scenarios.
-            </p>
+          <p class="lead">
+            If you’re asking <b>“is this token a honeypot?”</b> or <b>“why can’t I sell my token?”</b>, this guide gives you a practical
+            <b>honeypot token checker</b> workflow: fast screening, on-chain verification, and the red flags that cause
+            <b>token cannot sell</b> scenarios.
+          </p>
 
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#tools">Run a honeypot token check</a>
-              <a class="btn btn-ghost" href="#how-to-check">How to detect a honeypot token</a>
-              <a class="btn btn-ghost" href="#etherscan">Check contract on Etherscan</a>
-            </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#tools" aria-label="Run honeypot token check">Run a honeypot token check</a>
+          </div>
 
-            <div class="mini" aria-label="Quick highlights">
-              <span class="chip"><span class="tag">Fast</span> <b>60-second</b> scam filter</span>
-              <span class="chip"><span class="tag">On-chain</span> Verify <b>sellability</b> + taxes</span>
-              <span class="chip"><span class="tag">Safe</span> Prevent bad approvals</span>
-            </div>
+          <div class="mini" aria-label="Quick highlights">
+            <span class="chip"><span class="tag">Fast</span> <b>60-second</b> scam filter</span>
+            <span class="chip"><span class="tag">On-chain</span> Verify <b>sellability</b> + taxes</span>
+            <span class="chip"><span class="tag">Safe</span> Prevent risky approvals</span>
+          </div>
 
-            <div class="divider"></div>
+          <div class="trust-row" aria-label="Trusted references">
+            <a href="https://etherscan.io/verifyContract" target="_blank" rel="nofollow noopener">Etherscan (verification)</a>
+            <a href="https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20" target="_blank" rel="nofollow noopener">OpenZeppelin ERC20</a>
+            <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">Chainlink (read contracts)</a>
+            <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">FTC (crypto scams)</a>
+            <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3 (reporting)</a>
+            <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">CertiK (honeypot patterns)</a>
+          </div>
 
-            <div class="callout">
-              <span class="badge b-warn">Important</span>
-              <div>
-                <p style="margin:0">
-                  A “honeypot” isn’t always a literal <i>no-sell</i> block. Many scams allow sells only under impossible conditions
-                  (min sell thresholds, wallet whitelists, anti-bot rules), or drain value via extreme taxes.
-                  See how these patterns are described in security research like CertiK’s overview of honeypot tactics.
-                  <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">Learn more</a>
-                </p>
-              </div>
-            </div>
+          <div class="divider"></div>
 
-            <div class="toc" aria-label="Quick navigation">
-              <a href="#what-is">What is a honeypot token</a>
-              <a href="#how-it-works">How honeypots work</a>
-              <a href="#how-to-check">How to check if token is scam</a>
-              <a href="#signs">Common signs</a>
-              <a href="#avoid">How to avoid</a>
-              <a href="#examples">Real examples</a>
-              <a href="#etherscan">Etherscan contract check</a>
-              <a href="#faq">FAQ</a>
+          <div class="callout">
+            <span class="badge b-warn">Important</span>
+            <div>
+              <p style="margin:0">
+                A “honeypot” isn’t always a literal <i>no-sell</i> block. Many scams allow sells only under impossible conditions
+                (min sell thresholds, wallet whitelists, anti-bot rules), or drain value via extreme taxes.
+                See how these patterns are described in security research like CertiK’s overview of honeypot tactics.
+                <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">Learn more</a>
+              </p>
             </div>
           </div>
 
-          <aside class="side-card" aria-label="Quick risk dashboard">
-            <h3>Quick Risk Dashboard</h3>
-            <div class="score">
-              <div class="pill">
-                <div class="label">Primary failure mode</div>
-                <div class="value">Sell blocked</div>
-              </div>
-              <div class="pill">
-                <div class="label">Common symptom</div>
-                <div class="value">“Cannot sell”</div>
-              </div>
-              <div class="pill">
-                <div class="label">Fastest check</div>
-                <div class="value">Simulate swap</div>
-              </div>
-              <div class="pill">
-                <div class="label">Hard proof</div>
-                <div class="value">Contract rules</div>
-              </div>
-            </div>
-            <p class="note">
-              Always verify the contract, then test with tiny size. If you believe you’re a victim of crypto fraud, follow official guidance
-              from sources like the FBI and IC3. See: <a href="https://www.fbi.gov/how-we-can-help-you/victim-services/national-crimes-and-victim-resources/cryptocurrency-investment-fraud" target="_blank" rel="nofollow noopener">FBI resource</a>,
-              <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3 reporting info</a>.
-            </p>
-          </aside>
+          <div class="toc" aria-label="Quick navigation">
+            <a href="#what-is">What is a honeypot token</a>
+            <a href="#how-it-works">How honeypots work</a>
+            <a href="#how-to-check">How to check if token is scam</a>
+            <a href="#tools">Best tools</a>
+            <a href="#signs">Common signs</a>
+            <a href="#avoid">How to avoid</a>
+            <a href="#examples">Real examples</a>
+            <a href="#etherscan">Etherscan contract check</a>
+            <a href="#faq">FAQ</a>
+          </div>
         </div>
       </div>
     </section>
@@ -519,8 +480,8 @@
               <span class="badge b-danger">Trap</span>
               <div>
                 <h3 style="margin:0 0 4px">Classic honeypot</h3>
-                <p style="margin:0">
-                  Sell functions revert, or only whitelist addresses can sell. Users see price go up but hit “swap failed” or “token trading disabled”.
+                <p style="margin:0" class="muted">
+                  Sell functions revert, or only whitelisted addresses can sell. Users see price rise but hit “swap failed” or “transfer failed”.
                 </p>
               </div>
             </div>
@@ -528,21 +489,20 @@
               <span class="badge b-warn">Soft trap</span>
               <div>
                 <h3 style="margin:0 0 4px">Economic honeypot</h3>
-                <p style="margin:0">
-                  Sells are “allowed” but punished with huge taxes, minimum sell rules, or anti-bot logic that effectively prevents a real exit.
-                  (Commonly documented in security writeups such as CertiK’s honeypot explanation.)
-                  <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">Source</a>
+                <p style="margin:0" class="muted">
+                  Sells are “allowed” but punished with extreme taxes, minimum sell rules, or anti-bot logic that effectively prevents a real exit.
+                  (See typical patterns described in <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">CertiK’s overview</a>.)
                 </p>
               </div>
             </div>
           </div>
 
           <div style="margin-top:12px" class="callout">
-            <span class="badge b-ok">Context</span>
+            <span class="badge b-ok">Core question</span>
             <div>
-              <p style="margin:0">
-                A “honeypot token checker” is simply a set of tests that answer:
-                <b>Can a normal wallet buy AND sell under normal conditions?</b> If the answer is “no” (or “only under weird rules”), treat it as a scam token risk.
+              <p style="margin:0" class="muted">
+                A “honeypot token checker” answers one thing: <b>can a normal wallet buy and sell under normal conditions?</b>
+                If the answer is no (or only under weird rules), treat it as a scam-token risk.
               </p>
             </div>
           </div>
@@ -556,7 +516,7 @@
         <div class="card">
           <h2>How Honeypot Tokens Work</h2>
           <p class="muted">
-            Honeypots typically combine at least one <b>sell restriction</b> with manipulation around liquidity, taxes, approvals, or transfers.
+            Honeypots usually combine a sell restriction with liquidity manipulation, taxes, approvals, or transfer gates.
             Here are the most common mechanisms and what they look like on-chain.
           </p>
 
@@ -573,33 +533,33 @@
               <tbody>
                 <tr>
                   <td><b>Sell revert / blacklist</b></td>
-                  <td class="bad">Swap fails, “cannot estimate gas”, “transfer failed”</td>
-                  <td>Contract blocks <code>transferFrom</code> or router sells</td>
-                  <td>Simulate sell; read contract restrictions; verify code on Etherscan</td>
+                  <td class="bad">Sell fails: “cannot estimate gas”, “transfer failed”, “swap failed”</td>
+                  <td>Contract blocks router sells or specific wallets</td>
+                  <td>Simulate sell; inspect verified source on Etherscan</td>
                 </tr>
                 <tr>
                   <td><b>Whitelist-only sells</b></td>
                   <td class="bad">Only some wallets can sell</td>
                   <td>Owner controls who can exit</td>
-                  <td>Look for whitelist / admin checks in verified source</td>
+                  <td>Look for whitelist checks in verified source code</td>
                 </tr>
                 <tr>
-                  <td><b>Extreme taxes</b></td>
-                  <td class="warn">Sells “work” but output is near zero</td>
-                  <td>Tax drains value into dev wallet</td>
-                  <td>Simulate trade; inspect tax variables/events in contract</td>
+                  <td><b>Extreme sell tax</b></td>
+                  <td class="warn">Sell “works” but output is near zero</td>
+                  <td>Tax drains value to a dev/tax wallet</td>
+                  <td>Simulate trade; inspect tax variables and update functions</td>
                 </tr>
                 <tr>
-                  <td><b>Min sell amount</b></td>
-                  <td class="bad">You can only sell above impossible threshold</td>
-                  <td>Rules require selling more than supply or your balance</td>
-                  <td>Look for <code>require(amount &gt;= minSell)</code> patterns (common in honeypot writeups)</td>
+                  <td><b>Min sell / maxTx traps</b></td>
+                  <td class="bad">You can’t sell your size (reverts) or must sell impossible amounts</td>
+                  <td>Rules set thresholds that normal users can’t satisfy</td>
+                  <td>Search for minSell / maxTx / maxWallet and gating logic</td>
                 </tr>
                 <tr>
                   <td><b>Liquidity trap</b></td>
-                  <td class="warn">Price spikes, then liquidity removed</td>
-                  <td>Even valid sells fail due to no liquidity</td>
-                  <td>Check pool liquidity, LP locks, deployer history</td>
+                  <td class="warn">Price spikes then liquidity removed; sells become impossible</td>
+                  <td>No liquidity = no exit even if contract allows selling</td>
+                  <td>Check pool liquidity, sudden LP changes, deployer history</td>
                 </tr>
               </tbody>
             </table>
@@ -607,16 +567,16 @@
 
           <div class="divider"></div>
 
-          <h3>One more risk: approvals</h3>
+          <h3>Approvals are a separate but common risk</h3>
           <p class="muted">
-            Even if a token isn’t a honeypot, scams often rely on dangerous token approvals (<code>approve()</code> / allowance).
-            For the ERC-20 allowance model, see OpenZeppelin’s ERC20 documentation (industry-standard reference used by many projects):
+            Even if a token isn’t a honeypot, malicious sites often rely on dangerous allowances (approvals). For the ERC-20 allowance model,
+            OpenZeppelin is a widely used reference:
             <a href="https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20" target="_blank" rel="nofollow noopener">OpenZeppelin ERC20</a>.
           </p>
           <ul>
-            <li>Prefer small allowances over unlimited approvals.</li>
-            <li>Revoke unused approvals periodically.</li>
-            <li>Be cautious of “Connect wallet” pages pushing surprise approvals.</li>
+            <li>Prefer small allowances over unlimited approvals when possible.</li>
+            <li>Revoke unused allowances periodically.</li>
+            <li>Be cautious of “Connect wallet” prompts that push approvals immediately.</li>
           </ul>
         </div>
       </div>
@@ -635,10 +595,9 @@
             <div class="callout">
               <span class="badge b-ok">Step 1</span>
               <div>
-                <h3 style="margin:0 0 4px">Fast screening (simulation)</h3>
-                <p style="margin:0">
-                  Use a honeypot token checker tool or a DEX simulation to test a <b>tiny buy + tiny sell</b>.
-                  If sell simulation fails or returns near-zero, treat as high risk.
+                <h3 style="margin:0 0 4px">Simulate a tiny sell</h3>
+                <p style="margin:0" class="muted">
+                  Use a honeypot token checker tool or DEX simulation. If the sell simulation fails or returns near-zero, treat it as high risk.
                 </p>
               </div>
             </div>
@@ -646,10 +605,9 @@
             <div class="callout">
               <span class="badge b-ok">Step 2</span>
               <div>
-                <h3 style="margin:0 0 4px">Verify contract legitimacy</h3>
-                <p style="margin:0">
-                  Prefer <b>verified source code</b>, consistent deployer history, and transparent ownership controls.
-                  Etherscan explains why verification improves transparency:
+                <h3 style="margin:0 0 4px">Verify the contract on Etherscan</h3>
+                <p style="margin:0" class="muted">
+                  Prefer verified source code and transparent ownership controls. Etherscan explains why verification improves transparency:
                   <a href="https://etherscan.io/verifyContract" target="_blank" rel="nofollow noopener">Verify contract</a>.
                 </p>
               </div>
@@ -658,10 +616,9 @@
             <div class="callout">
               <span class="badge b-ok">Step 3</span>
               <div>
-                <h3 style="margin:0 0 4px">Scan for sell restrictions</h3>
-                <p style="margin:0">
-                  Look for blacklists, whitelists, maxTx / maxWallet traps, minSell thresholds, or router-specific blocks.
-                  If you’re not technical, focus on verified source + reputable audits.
+                <h3 style="margin:0 0 4px">Check for restrictions + admin gates</h3>
+                <p style="margin:0" class="muted">
+                  Look for blacklists/whitelists, tradingEnabled toggles, maxTx/maxWallet, cooldowns, min sell rules, and owner-only setters.
                 </p>
               </div>
             </div>
@@ -669,10 +626,10 @@
             <div class="callout">
               <span class="badge b-ok">Step 4</span>
               <div>
-                <h3 style="margin:0 0 4px">Check liquidity health</h3>
-                <p style="margin:0">
-                  No liquidity (or removable liquidity) can create a “can’t sell” situation even without a honeypot function.
-                  Confirm pool size, LP locks, and sudden liquidity changes.
+                <h3 style="margin:0 0 4px">Confirm liquidity health</h3>
+                <p style="margin:0" class="muted">
+                  Insufficient or removable liquidity can create a “can’t sell” situation even without a honeypot sell block.
+                  Confirm pool size and watch sudden liquidity changes.
                 </p>
               </div>
             </div>
@@ -681,11 +638,11 @@
           <div class="divider"></div>
 
           <div class="callout">
-            <span class="badge b-warn">Long-tail</span>
+            <span class="badge b-warn">Long-tail tip</span>
             <div>
-              <p style="margin:0">
+              <p style="margin:0" class="muted">
                 If your query is <b>“why can't I sell my token”</b> or <b>“token cannot sell honeypot”</b>, the most common root causes are:
-                (1) sell restriction in contract, (2) extreme sell tax, or (3) insufficient/removed liquidity.
+                (1) sell restriction in contract, (2) extreme sell tax, (3) insufficient/removed liquidity, or (4) wrong router/pair.
               </p>
             </div>
           </div>
@@ -699,8 +656,7 @@
         <div class="card">
           <h2>Best Honeypot Token Checker Tools</h2>
           <p class="muted">
-            Use tools for fast filtering — then confirm with on-chain evidence. Below is a safe, repeatable approach:
-            tool → contract verification → tiny sell test → final decision.
+            Use tools for fast filtering — then confirm with on-chain evidence. Best practice: tool → contract verification → tiny test → decision.
           </p>
 
           <div class="checker" aria-label="Token input">
@@ -708,38 +664,30 @@
               <span style="font-weight:900; color:var(--muted)">0x</span>
               <input id="tokenAddr" inputmode="text" placeholder="Paste token contract address (example: 0x1234...)" aria-label="Token contract address" />
             </div>
-
-            <a class="btn btn-primary" href="#tools-links">Open checker links</a>
-            <a class="btn btn-ghost" href="#etherscan">Verify on Etherscan</a>
-          </div>
-
-          <div class="helper">
-            <span>Tip: only trust official domains. Scammers clone “checker” sites.</span>
-            <span>Use <code>Etherscan</code> + verified source to confirm.</span>
+            <a class="btn btn-primary" href="#tools-links" aria-label="Jump to checker links">Run a honeypot token check</a>
           </div>
 
           <div id="tools-links" class="divider"></div>
 
           <div class="grid">
             <div class="callout">
-              <span class="badge b-ok">Recommended</span>
+              <span class="badge b-ok">On-chain</span>
               <div>
-                <h3 style="margin:0 0 4px">On-chain verification (gold standard)</h3>
+                <h3 style="margin:0 0 4px">Etherscan (verification + contract reading)</h3>
                 <p style="margin:0" class="muted">
-                  Use Etherscan’s contract pages to inspect read/write methods, verified source, and events.
-                  For learning how to read contract interfaces, Chainlink provides a clear walkthrough:
-                  <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">How to read a smart contract</a>.
+                  Start with Etherscan to confirm verified source and inspect restrictions.
+                  <a href="https://info.etherscan.com/how-to-verify-contracts/" target="_blank" rel="nofollow noopener">How verification works</a>.
                 </p>
               </div>
             </div>
 
             <div class="callout">
-              <span class="badge b-warn">Also do</span>
+              <span class="badge b-warn">Awareness</span>
               <div>
-                <h3 style="margin:0 0 4px">Scam-awareness checks</h3>
+                <h3 style="margin:0 0 4px">Scam safety guidance</h3>
                 <p style="margin:0" class="muted">
-                  Honeypots are one category of scam. For broader scam patterns and safe behavior, consult official consumer guidance like the FTC:
-                  <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">Cryptocurrency scams</a>.
+                  Honeypots are one scam type. For broad scam patterns, see official consumer guidance:
+                  <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">FTC crypto scams</a>.
                 </p>
               </div>
             </div>
@@ -760,9 +708,9 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><b>Simulation</b></td>
+                  <td><b>Sell simulation</b></td>
                   <td>Will a small sell succeed?</td>
-                  <td class="good">Fast detection</td>
+                  <td class="good">Fast honeypot detection</td>
                   <td>May miss conditional traps (time, wallet, maxTx)</td>
                 </tr>
                 <tr>
@@ -779,18 +727,17 @@
                 </tr>
                 <tr>
                   <td><b>Ownership / admin controls</b></td>
-                  <td>Can owner change taxes or block sells?</td>
-                  <td class="warn">Governance risk</td>
-                  <td>Admin risk isn’t always “honeypot”, but still dangerous</td>
+                  <td>Can the owner change taxes or block trades?</td>
+                  <td class="warn">Governance risk signals</td>
+                  <td>Not always honeypot, but still dangerous</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <p class="muted" style="margin-top:12px">
-            If you want the strongest signal: verify the contract’s source, then search for sell restrictions and admin-only gates.
-            Etherscan’s documentation on verification explains why verified source code improves transparency for users:
-            <a href="https://info.etherscan.com/how-to-verify-contracts/" target="_blank" rel="nofollow noopener">Etherscan verification guide</a>.
+            If you want the strongest signal: check verified source code and search for sell restrictions/admin-only setters on Etherscan.
+            For contract reading basics: <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">Chainlink tutorial</a>.
           </p>
         </div>
       </div>
@@ -805,34 +752,34 @@
             <div class="callout">
               <span class="badge b-danger">Red flag</span>
               <div>
-                <h3 style="margin:0 0 4px">“Swap failed” on sell only</h3>
+                <h3 style="margin:0 0 4px">Sells fail but buys work</h3>
                 <p style="margin:0" class="muted">
-                  If buys succeed but sells revert, assume honeypot risk until proven otherwise.
+                  If buying succeeds but selling reverts, assume honeypot risk until proven otherwise.
                 </p>
               </div>
             </div>
             <div class="callout">
               <span class="badge b-danger">Red flag</span>
               <div>
-                <h3 style="margin:0 0 4px">Unverified contract</h3>
+                <h3 style="margin:0 0 4px">Unverified contract source</h3>
                 <p style="margin:0" class="muted">
-                  No verified source = no transparency. Prefer verified contracts and reputable teams.
+                  No verified code = limited transparency. Prefer verified contracts whenever possible.
                 </p>
               </div>
             </div>
             <div class="callout">
               <span class="badge b-warn">Warning</span>
               <div>
-                <h3 style="margin:0 0 4px">Owner can change tax/limits</h3>
+                <h3 style="margin:0 0 4px">Owner can change limits/taxes</h3>
                 <p style="margin:0" class="muted">
-                  Even “safe today” can become unsafe tomorrow if admin controls allow changing sell taxes or blacklists.
+                  Even “safe today” can become unsafe if admin functions can change taxes or block trading.
                 </p>
               </div>
             </div>
             <div class="callout">
               <span class="badge b-warn">Warning</span>
               <div>
-                <h3 style="margin:0 0 4px">Liquidity looks fake or fragile</h3>
+                <h3 style="margin:0 0 4px">Liquidity is thin or unstable</h3>
                 <p style="margin:0" class="muted">
                   Thin liquidity makes exits impossible under slippage. If LP can be removed, you’re exposed.
                 </p>
@@ -850,25 +797,25 @@
           <h2>How to Avoid Honeypot Tokens</h2>
           <div class="grid" style="margin-top:12px">
             <div>
-              <h3>Before buying</h3>
+              <h3>Before you buy</h3>
               <ul>
-                <li><b>Simulate</b> a tiny sell (or do a tiny buy+sell if fees allow).</li>
-                <li>Prefer tokens with <b>verified source code</b> and credible documentation.</li>
-                <li>Check <b>liquidity depth</b> and whether LP is locked/burned (when possible to verify).</li>
-                <li>Avoid “too good to be true” social hype and urgency tactics.</li>
+                <li>Run a <b>honeypot token check</b> (simulate a tiny sell).</li>
+                <li>Prefer tokens with <b>verified source code</b> and transparent docs.</li>
+                <li>Check liquidity depth; treat low liquidity as “high risk”.</li>
+                <li>Avoid urgency tactics and “guaranteed profits” narratives.</li>
               </ul>
               <p class="muted">
-                General scam-avoidance guidance from the FTC is useful context for crypto safety behaviors:
-                <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">FTC crypto scam guidance</a>.
+                For general scam patterns and safe behavior, see:
+                <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">FTC guidance</a>.
               </p>
             </div>
             <div>
-              <h3>After interacting</h3>
+              <h3>After you interacted</h3>
               <ul>
-                <li>Review and revoke unnecessary approvals (don’t leave unlimited allowances).</li>
-                <li>Don’t share seed phrases, and don’t “verify wallets” on random sites.</li>
-                <li>If you suspect fraud, follow official reporting guidance:
-                  <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3 crypto info</a>.
+                <li>Review and revoke unnecessary approvals.</li>
+                <li>Never share seed phrases; ignore “support” DMs.</li>
+                <li>If you suspect fraud, preserve transaction hashes and consider official reporting:
+                  <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3</a>.
                 </li>
               </ul>
               <div class="callout" style="margin-top:10px">
@@ -891,16 +838,15 @@
         <div class="card">
           <h2>Real Examples of Honeypot Tokens</h2>
           <p class="muted">
-            Honeypots evolve, but common patterns repeat. Security research often highlights setups like minimum sell thresholds and conditional sells.
-            CertiK’s writeup includes examples of “technically sellable” tokens that still trap users via impossible thresholds:
-            <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">Honeypot scams overview</a>.
+            Honeypots evolve, but patterns repeat: sell reverts, whitelist-only sells, conditional transfers, and extreme taxes.
+            See common mechanisms described in:
+            <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">CertiK’s honeypot overview</a>.
           </p>
-
           <div class="callout" style="margin-top:12px">
             <span class="badge b-ok">Practical</span>
             <div>
               <p style="margin:0" class="muted">
-                Instead of memorizing examples, memorize the workflow: simulate sell → verify source → inspect restrictions → verify liquidity.
+                Instead of memorizing specific tokens, memorize the workflow: simulate sell → verify source → inspect restrictions → verify liquidity.
                 That’s the core of <b>honeypot token detection</b>.
               </p>
             </div>
@@ -915,9 +861,9 @@
         <div class="card">
           <h2>How to Check Token Contracts on Etherscan</h2>
           <p class="muted">
-            Etherscan is the most common place to validate contract verification status, read functions, and review transactions/events.
-            If you’re new to reading contracts, this tutorial is a strong starting point:
-            <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">How to read a smart contract</a>.
+            Etherscan is the most common place to validate verification status, review contract methods, and inspect transactions/events.
+            If you’re new to reading contracts, start here:
+            <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">Chainlink tutorial</a>.
           </p>
 
           <div class="grid" style="margin-top:12px">
@@ -926,17 +872,17 @@
               <div>
                 <h3 style="margin:0 0 4px">Open the token contract page</h3>
                 <p style="margin:0" class="muted">
-                  Paste the token address into Etherscan search. Confirm it matches the official address used by the project.
+                  Paste the token address into Etherscan. Confirm it matches the official address used by the project.
                 </p>
               </div>
             </div>
             <div class="callout">
               <span class="badge b-ok">Step B</span>
               <div>
-                <h3 style="margin:0 0 4px">Check “Contract” tab</h3>
+                <h3 style="margin:0 0 4px">Check the Contract tab</h3>
                 <p style="margin:0" class="muted">
-                  Look for verified source code and read/write interfaces. Verified code improves transparency:
-                  <a href="https://etherscan.io/verifyContract" target="_blank" rel="nofollow noopener">Etherscan verification</a>.
+                  Look for verified source code and read/write interfaces:
+                  <a href="https://etherscan.io/verifyContract" target="_blank" rel="nofollow noopener">verification</a>.
                 </p>
               </div>
             </div>
@@ -945,7 +891,7 @@
               <div>
                 <h3 style="margin:0 0 4px">Search for sell restrictions</h3>
                 <p style="margin:0" class="muted">
-                  Watch for blacklist/whitelist logic, maxTx/maxWallet, cooldowns, tradingEnabled toggles, and admin-only controls.
+                  Watch for blacklists, whitelists, maxTx/maxWallet, cooldowns, tradingEnabled toggles, and owner-only setters.
                 </p>
               </div>
             </div>
@@ -963,49 +909,47 @@
           <div class="divider"></div>
 
           <p class="muted">
-            If you’re a developer, Etherscan provides a structured overview of how contract verification works:
-            <a href="https://info.etherscan.com/how-to-verify-contracts/" target="_blank" rel="nofollow noopener">How to verify contracts</a>.
-            For the ERC-20 allowance model used in DeFi, OpenZeppelin is a widely referenced standard library:
-            <a href="https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20" target="_blank" rel="nofollow noopener">ERC20 docs</a>.
+            For deeper context: <a href="https://info.etherscan.com/how-to-verify-contracts/" target="_blank" rel="nofollow noopener">Etherscan Info Center</a> •
+            <a href="https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20" target="_blank" rel="nofollow noopener">OpenZeppelin ERC20 docs</a>.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- AUTHOR + SOURCES -->
+    <!-- TRUST & SOURCES -->
     <section class="section">
       <div class="container">
         <div class="card">
           <h2>Trust &amp; Sources</h2>
+
           <div class="author" aria-label="Author box">
             <div class="avatar" aria-hidden="true"></div>
             <div>
               <div class="smallcaps muted">Author</div>
-              <div><b>DeFi Safety Research Desk</b> — practical on-chain risk checks for retail users.</div>
+              <div><b>DeFi Safety Research Desk</b> — practical on-chain checks to help users avoid scam tokens.</div>
               <div class="muted" style="margin-top:6px">
-                Last updated: <b>March 4, 2026</b> • This page is informational and not financial advice.
+                Last updated: <b>March 4, 2026</b> • This page is informational, not financial advice.
               </div>
             </div>
           </div>
 
           <div class="divider"></div>
 
-          <p class="muted sources" style="margin:0">
-            Authoritative references used throughout this guide:
+          <p class="muted" style="margin:0">
+            References:
             <a href="https://etherscan.io/verifyContract" target="_blank" rel="nofollow noopener">Etherscan (verification)</a> •
-            <a href="https://info.etherscan.com/how-to-verify-contracts/" target="_blank" rel="nofollow noopener">Etherscan Info Center</a> •
+            <a href="https://info.etherscan.com/how-to-verify-contracts/" target="_blank" rel="nofollow noopener">Etherscan Info</a> •
             <a href="https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20" target="_blank" rel="nofollow noopener">OpenZeppelin ERC20</a> •
-            <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">Chainlink (reading contracts)</a> •
-            <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">FTC (crypto scams)</a> •
-            <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3 (crypto crime info)</a> •
-            <a href="https://www.fbi.gov/how-we-can-help-you/victim-services/national-crimes-and-victim-resources/cryptocurrency-investment-fraud" target="_blank" rel="nofollow noopener">FBI (investment fraud)</a> •
-            <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">CertiK (honeypot patterns)</a>
+            <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">Chainlink tutorial</a> •
+            <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">FTC scams</a> •
+            <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3 reporting</a> •
+            <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">CertiK honeypots</a>
           </p>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ (EXPANDED) -->
     <section id="faq" class="section">
       <div class="container">
         <div class="card">
@@ -1014,54 +958,127 @@
           <details>
             <summary>How do I know if a token is a honeypot?</summary>
             <p>
-              The fastest answer comes from a tiny sell simulation or a tiny buy+sell test. The strongest confirmation is reading verified contract rules
-              (blacklists, whitelists, trading toggles, min sell thresholds) on Etherscan. Verification and transparency are explained by Etherscan:
+              The fastest check is a tiny sell simulation (or a tiny buy+sell test if fees allow). The strongest confirmation is reading verified contract rules
+              on Etherscan: blacklists/whitelists, trading toggles, maxTx/maxWallet, min sell thresholds, and owner-only setters.
+              Verification improves transparency and is documented by Etherscan:
               <a href="https://etherscan.io/verifyContract" target="_blank" rel="nofollow noopener">source</a>.
             </p>
           </details>
 
           <details>
-            <summary>Why can’t I sell my token?</summary>
+            <summary>Why can't I sell my token?</summary>
             <p>
-              Common causes: (1) the contract blocks sells (honeypot), (2) the token has extreme sell tax so output becomes near-zero,
-              (3) liquidity is insufficient or has been removed. Start with sell simulation and then verify contract rules and pool liquidity.
+              The most common causes are: (1) a sell restriction in the contract (honeypot), (2) extreme sell tax leaving near-zero output,
+              (3) insufficient or removed liquidity, (4) router/pair mismatch, or (5) maxTx/anti-bot rules blocking your sell size.
+              Start with a tiny sell simulation, then verify contract logic and liquidity.
             </p>
           </details>
 
           <details>
-            <summary>Is “unverified contract” always a scam?</summary>
+            <summary>What does “token cannot sell honeypot” mean?</summary>
             <p>
-              Not always, but it’s a major risk signal because you can’t inspect the true logic. Prefer verified code whenever possible and treat unverified
-              contracts as higher risk until you can validate behavior with tiny trades and reputable sources.
+              It usually means the contract prevents normal users from selling after buying. This can be a hard block (sell reverts) or a soft trap
+              where selling is technically possible but only under restrictive conditions (whitelist-only, min sell rules, time windows).
             </p>
           </details>
 
           <details>
-            <summary>Can a token be “sellable” but still a honeypot?</summary>
+            <summary>What is honeypot token detection?</summary>
             <p>
-              Yes. Some tokens are technically sellable but only under restrictive conditions (minimum sell thresholds, whitelists, time locks),
-              or they impose taxes that make selling economically pointless. Security research often highlights these “soft trap” patterns
-              (see examples described by CertiK).
-              <a href="https://www.certik.com/blog/honeypot-scams" target="_blank" rel="nofollow noopener">Read more</a>.
+              Honeypot token detection is the process of analyzing a token’s trading behavior and smart contract logic to determine if sells are blocked
+              or made economically impossible. Good detection combines simulation with on-chain verification and liquidity checks.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is an unverified contract always a scam token?</summary>
+            <p>
+              Not always, but it is a major risk signal because you can’t inspect the real logic. Prefer verified contracts and treat unverified ones
+              as higher risk until you validate behavior with tiny trades and trustworthy evidence.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can a token be sellable but still a honeypot?</summary>
+            <p>
+              Yes. Some tokens allow selling only for whitelisted wallets, only after a certain time, or only within certain limits. Others apply
+              taxes so high that the sell output becomes near-zero. These “soft traps” are a common honeypot pattern.
+            </p>
+          </details>
+
+          <details>
+            <summary>How high does a sell tax need to be to consider it dangerous?</summary>
+            <p>
+              There’s no single “safe” number, but if the sell tax is high enough that small sells return almost nothing, or if the owner can change
+              the tax at any time, treat it as dangerous. Always check if taxes are adjustable via owner-only setter functions.
+            </p>
+          </details>
+
+          <details>
+            <summary>What are the most common signs of a honeypot crypto scam?</summary>
+            <p>Common red flags:</p>
+            <ul>
+              <li>Buys succeed but sells fail (revert) or can’t estimate gas.</li>
+              <li>Verified source code is missing or obfuscated.</li>
+              <li>Owner can toggle trading, blacklist wallets, or change taxes/limits.</li>
+              <li>Liquidity is thin, recently added, or suspiciously unstable.</li>
+              <li>Token marketing relies on urgency, hype, and “guaranteed profit” claims.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>How do I check a token contract on Etherscan?</summary>
+            <p>
+              Paste the token address into Etherscan and open the <b>Contract</b> tab. Look for verified source code and scan for restrictions:
+              blacklist/whitelist logic, tradingEnabled toggles, maxTx/maxWallet, cooldowns, min sell rules, and owner-only setters.
+              If you’re learning contract reading, Chainlink’s tutorial is a great starting point:
+              <a href="https://chain.link/tutorials/how-to-read-smart-contract" target="_blank" rel="nofollow noopener">tutorial</a>.
+            </p>
+          </details>
+
+          <details>
+            <summary>Why does my wallet show profit but I can’t exit?</summary>
+            <p>
+              Honeypots and low-liquidity traps can make the displayed price misleading. You may see large “paper profit”, but real sell output is limited by
+              contract restrictions, taxes, or liquidity depth. Always validate sellability and expected output with simulation before sizing up.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is low liquidity the same as a honeypot?</summary>
+            <p>
+              Not exactly. Low liquidity means you may not be able to sell without massive slippage (or at all). A honeypot is typically an intentional
+              contract-level restriction. In practice, both can create the same result: “why can’t I sell my token?”
+            </p>
+          </details>
+
+          <details>
+            <summary>Do approvals (allowances) matter for honeypot scams?</summary>
+            <p>
+              Approvals are a separate but common risk. Some scam sites trick users into granting unlimited allowances to malicious contracts.
+              The ERC-20 allowance model is explained in OpenZeppelin’s reference:
+              <a href="https://docs.openzeppelin.com/contracts/5.x/api/token/ERC20" target="_blank" rel="nofollow noopener">ERC20 docs</a>.
+              Use small allowances and revoke unused approvals.
             </p>
           </details>
 
           <details>
             <summary>What should I do if I think I was scammed?</summary>
             <p>
-              Stop sending funds, preserve transaction hashes and addresses, and follow official reporting guidance. In the U.S., the FBI and IC3 provide
-              official resources:
-              <a href="https://www.fbi.gov/how-we-can-help-you/victim-services/national-crimes-and-victim-resources/cryptocurrency-investment-fraud" target="_blank" rel="nofollow noopener">FBI</a>,
-              <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3</a>.
+              Stop sending funds, preserve transaction hashes and addresses, and consider official reporting. In the U.S., IC3 provides guidance:
+              <a href="https://www.ic3.gov/CrimeInfo/Cryptocurrency" target="_blank" rel="nofollow noopener">IC3 crypto info</a>.
+              For general scam awareness, the FTC also has practical guidance:
+              <a href="https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-scams" target="_blank" rel="nofollow noopener">FTC</a>.
             </p>
           </details>
 
           <div class="divider"></div>
 
           <p class="muted" style="margin:0">
-            Related searches this page targets: <b>honeypot token checker</b>, <b>is this token a honeypot</b>, <b>honeypot token detection</b>,
+            Targeted searches: <b>honeypot token checker</b>, <b>is this token a honeypot</b>, <b>honeypot token detection</b>,
             <b>how to detect honeypot token</b>, <b>check if token is scam</b>, <b>crypto honeypot checker</b>,
-            plus long-tail: <b>why can't i sell my token</b>, <b>token cannot sell honeypot</b>, <b>erc20 honeypot token</b>, <b>is this token safe</b>.
+            plus long-tail: <b>why can't i sell my token</b>, <b>honeypot crypto meaning</b>, <b>token cannot sell honeypot</b>,
+            <b>erc20 honeypot token</b>, <b>is this token safe</b>.
           </p>
         </div>
       </div>
@@ -1080,19 +1097,18 @@
   </main>
 
   <script>
-    // Lightweight UX: keep it safe (no external calls). Helps users copy/paste address and jump to resources.
+    // Lightweight UX: extract 0x address if user pastes a URL or extra text.
     (function(){
       const input = document.getElementById('tokenAddr');
       if(!input) return;
 
-      // Optional: when user pastes a full URL, try to extract 0x address.
-      input.addEventListener('paste', (e) => {
-        setTimeout(() => {
-          const v = (input.value || "").trim();
-          const m = v.match(/0x[a-fA-F0-9]{40}/);
-          if(m) input.value = m[0];
-        }, 0);
-      });
+      function normalize(){
+        const v = (input.value || "").trim();
+        const m = v.match(/0x[a-fA-F0-9]{40}/);
+        if(m) input.value = m[0];
+      }
+      input.addEventListener('paste', () => setTimeout(normalize, 0));
+      input.addEventListener('blur', normalize);
     })();
   </script>
 </body>
